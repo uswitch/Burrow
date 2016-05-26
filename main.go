@@ -120,9 +120,7 @@ func burrowMain() int {
 	createPidFile(appContext.Config.General.LogDir + "/" + appContext.Config.General.PIDFile)
 	defer removePidFile(appContext.Config.General.LogDir + "/" + appContext.Config.General.PIDFile)
 
-	// Set up stderr/stdout to go to a separate log file
-	openOutLog(appContext.Config.General.LogDir + "/burrow.out")
-	fmt.Println("Started Burrow at", time.Now().Format("January 2, 2006 at 3:04pm (MST)"))
+	log.Infof("Started Burrow at %s", time.Now().Format("January 2, 2006 at 3:04pm (MST)"))
 
 	// If a logging config is specified, replace the existing loggers
 	if appContext.Config.General.LogConfig != "" {
